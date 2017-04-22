@@ -1,0 +1,12 @@
+#!/bin/sh
+mkdir -p /usr/local/pkuhelper/pkuipgw/{PROJECT_NAME}
+rm -rf /usr/local/pkuhelper/pkuipgw/{PROJECT_NAME}/*
+cd `dirname "$0"`
+cd ..
+cp -r {PROJECT_NAME}/ /usr/local/pkuhelper/pkuipgw/{PROJECT_NAME}
+rm /usr/local/pkuhelper/pkuipgw/{PROJECT_NAME}/install
+[ -e /usr/local/bin/pkuipgw ] && rm /usr/local/bin/pkuipgw
+ln -s /usr/local/pkuhelper/pkuipgw/{PROJECT_NAME}/bin/pkuipgw /usr/local/bin/pkuipgw
+
+echo "{PROJECT_NAME} has been installed successfully!"
+echo "Try 'pkuipgw --help' for more information."

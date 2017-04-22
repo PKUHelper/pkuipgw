@@ -1,0 +1,3 @@
+(ns pkuipgw.config)
+
+(def config {:its-url "http://replace.this.with.real/its/url"})

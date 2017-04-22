@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/local/pkuhelper/pkuipgw/{PROJECT_NAME}
+java -jar {PROJECT_NAME}.jar $@

@@ -1,0 +1,24 @@
+/target
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+.hgignore
+.hg/
+
+# the assembled files to release
+/release
+
+# Intellij IDEA
+.idea
+*.iml
+
+# MacOS hidden file
+.DS_Store
+
+# configurations
+src/pkuipgw/config.clj
