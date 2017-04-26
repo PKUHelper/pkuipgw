@@ -1,6 +1,6 @@
 # pkuipgw
 
-[![Build Status](https://api.travis-ci.org/PKUHelper/pkuipgw.svg?branch=master)](https://travis-ci.org/PKUHelper/pkuipgw) [![GitHub release](https://img.shields.io/github/release/PKUHelper/pkuipgw.svg)](/PKUHelper/pkuipgw/releases/latest) [![License](https://img.shields.io/badge/License-EPL%201.0-blue.svg)](LICENSE) ![PullRequest](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+[![Build Status](https://api.travis-ci.org/PKUHelper/pkuipgw.svg?branch=master)](https://travis-ci.org/PKUHelper/pkuipgw) [![GitHub release](https://img.shields.io/github/release/PKUHelper/pkuipgw.svg)](https://github.com/PKUHelper/pkuipgw/releases/latest) [![License](https://img.shields.io/badge/License-EPL%201.0-blue.svg)](LICENSE) ![PullRequest](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 A CLI (Command Line Interface) for PKU IP Gateway connection.
 
@@ -22,7 +22,7 @@ Java(TM) SE Runtime Environment (build 1.8.0_112-b16)
 Java HotSpot(TM) 64-Bit Server VM (build 25.112-b16, mixed mode)
 ```
 
-Download the latest released package of pkuipgw at: [![GitHub release](https://img.shields.io/github/release/PKUHelper/pkuipgw.svg)](/PKUHelper/pkuipgw/releases/latest)
+Download the latest released package of pkuipgw at: [![GitHub release](https://img.shields.io/github/release/PKUHelper/pkuipgw.svg)](https://github.com/PKUHelper/pkuipgw/releases/latest)
 (click `pkuipgw-<latest-version>.tgz` to start downloading)
 
 Unpack `pkuipgw-<latest-version>.tgz`
