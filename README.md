@@ -1,6 +1,6 @@
 # pkuipgw
 
-![PullRequest](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+[![Build Status](https://api.travis-ci.org/PKUHelper/pkuipgw.svg?branch=master)](https://travis-ci.org/PKUHelper/pkuipgw) ![PullRequest](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 A CLI (Command Line Interface) for PKU IP Gateway connection.
 
