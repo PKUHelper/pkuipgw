@@ -6,7 +6,40 @@ A CLI (Command Line Interface) for PKU IP Gateway connection.
 
 ## Installation
 
-Download from http://example.com/FIXME.
+To use pkuipgw, please make sure you have a JRE (Java Runtime Environment) on your computer.
+
+To check whether your JRE is ready, run
+
+```bash
+$ java -version
+```
+
+You would see an output like the following if the JRE has been set successfully.
+
+```
+java version "1.8.0_112"
+Java(TM) SE Runtime Environment (build 1.8.0_112-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.112-b16, mixed mode)
+```
+
+Download the latest released package of pkuipgw at: [![GitHub release](https://img.shields.io/github/release/PKUHelper/pkuipgw.svg)](/PKUHelper/pkuipgw/releases/latest)
+(click `pkuipgw-<latest-version>.tgz` to start downloading)
+
+Unpack `pkuipgw-<latest-version>.tgz`
+
+```bash
+$ cd /path/to/the/directory/of/pkuipgw-<latest-version>.tgz
+$ tar -zxvf pkuipgw-<latest-version>.tgz
+```
+
+Install
+
+```bash
+$ cd pkuipgw-<latest-version>
+$ sudo install # or sudo ./install on MacOS
+```
+
+Enjoy yourself!
 
 ## Usage
 ```bash
