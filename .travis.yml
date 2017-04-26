@@ -1,0 +1,4 @@
+language: clojure
+jdk: oraclejdk8
+before_install:
+  - sed 's/http:\/\/replace\.this\.with\.real\/its\/url/${ITS_URL}/g' src/pkuipgw/config.clj.sample > src/pkuipgw/config.clj
