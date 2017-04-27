@@ -1,5 +1,6 @@
 (ns pkuipgw.core
   (:require [pkuipgw.ipgw-client :as client])
+  (:require [pkuipgw.locale :as locale])
   (:require [clojure.pprint :as pp])
   (:require [clojure.string :as string])
   (:require [clojure.tools.cli :as cli])
@@ -29,14 +30,21 @@
 ;; The valid actions.
 (def action-map [[:connect ["c" "connect"] "Connect to PKU IP Gateway"]
                  [:disconnect ["d" "disconnect"] "Disconnect from PKU IP Gateway"]
-                 [:list ["l" "list"] "Show the list of current connections"]])
+                 [:list ["l" "list"] "Show the list of current connections"]
+                 [:config [nil "config"] "Set the global config"]])
 
 ;; i.e.
 ;;   c, connect     Connect to PKU IP Gateway
 ;;   d, disconnect  Disconnect from PKU IP Gateway
 ;;   l, list        Show the list of current connections
+;;      config      Set the global config
 (def action-summary
-  (let [tables (map (fn [[_ coll desc]] [(string/join ", " coll) desc]) action-map)]
+  (let [tables (map (fn [[_ [short-act long-act] desc]]
+                      [(cond (and short-act long-act) (str short-act ", " long-act)
+                             long-act (str "   " long-act)
+                             short-act short-act)
+                       desc])
+                    action-map)]
     (table-string tables)))
 
 ;; The options shown in short usage.
@@ -103,7 +111,7 @@
       errors {:exit-message (create-error-msg errors)}
       ;; alert argument errors i.e. [Wrong action count] [Unknown action]
       arg-error {:exit-message (create-error-msg [arg-error])}
-      action {:action action, :options options}
+      action {:action action, :options (into (locale/load-config) options)}
       :else {:exit-message short-usage})))
 
 (defn exit [status msg]
@@ -156,6 +164,9 @@
     (options :ip) (handle-disconnect-ip options)
     :else (handle-disconnect-current options)))
 
+(defn handle-config [options]
+  (locale/store-config options))
+
 (defn -main [& args]
   (let [{:keys [action options exit-message ok?]} (validate-args args)]
     (if exit-message
@@ -163,4 +174,5 @@
       (case action
         :connect (handle-connect options)
         :list (handle-list options)
-        :disconnect (handle-disconnect options)))))
+        :disconnect (handle-disconnect options)
+        :config (handle-config options)))))
