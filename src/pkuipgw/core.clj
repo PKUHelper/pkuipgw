@@ -64,12 +64,13 @@
           cli-options-disconnect))
 
 ;; i.e. Usage: pkuipgw [--help] [--version] <action> [<options>]
-(def short-usage (str "Usage: pkuipgw"
-                      (reduce (fn [cur-str [short-op long-op & _]]
-                                (str cur-str " [" (string/join " | " (filter some? [short-op long-op])) "]"))
-                              ""
-                              cli-options-prefix)
-                      " <action> [<options>]"))
+(def short-usage
+  (str "Usage: pkuipgw"
+       (reduce (fn [cur-str [short-op long-op & _]]
+                 (str cur-str " [" (string/join " | " (filter some? [short-op long-op])) "]"))
+               ""
+               cli-options-prefix)
+       " <action> [<options>]"))
 
 (defn usage [options-summary]
   (->> [""
@@ -87,12 +88,12 @@
        (string/join \newline)))
 
 (defn create-error-msg [errors]
-  (str (string/join \newline errors) "\n" short-usage))
+  (str (string/join \newline errors) \newline short-usage))
 
 (defn parse-arguments [args]
   (let [arg-count (count args)
         arg (first args)
-        action (reduce #(or %1 %2) (map (fn [[action coll]] (if ((set coll) arg) action)) action-map))]
+        action (some (fn [[action coll]] (if ((set coll) arg) action)) action-map)]
     (cond
       (not= 1 arg-count) {:arg-error (str "Wrong action count: " arg-count)}
       action {:action action}
@@ -100,7 +101,7 @@
 
 (defn validate-args
   [args]
-  (let [{:keys [options arguments errors summary]} (cli/parse-opts args (concat cli-options-root))
+  (let [{:keys [options arguments errors summary]} (cli/parse-opts args cli-options-root)
         {:keys [action arg-error]} (parse-arguments arguments)]
     (cond
       ;; show help info
@@ -159,20 +160,22 @@
     (exit 0 msg)))
 
 (defn handle-disconnect [options]
-  (cond
-    (options :all) (handle-disconnect-all options)
-    (options :ip) (handle-disconnect-ip options)
-    :else (handle-disconnect-current options)))
+  ((cond
+     (options :all) handle-disconnect-all
+     (options :ip) handle-disconnect-ip
+     :else handle-disconnect-current)
+    options))
 
 (defn handle-config [options]
   (locale/store-config options))
 
 (defn -main [& args]
   (let [{:keys [action options exit-message ok?]} (validate-args args)]
-    (if exit-message
-      (exit (if ok? 0 1) exit-message)
-      (case action
-        :connect (handle-connect options)
-        :list (handle-list options)
-        :disconnect (handle-disconnect options)
-        :config (handle-config options)))))
+    (if-not exit-message
+      ((case action
+         :connect handle-connect
+         :list handle-list
+         :disconnect handle-disconnect
+         :config handle-config)
+        options)
+      (exit (if ok? 0 1) exit-message))))

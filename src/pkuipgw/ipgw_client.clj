@@ -11,7 +11,7 @@
   {:user-id (str user-id), :password (str password), :ip (str ip)})
 
 (defn- replace-string-with-reserved-arguments [s bundle]
-  (reduce (fn [cur-str [key replacement]] (string/replace cur-str replacement (bundle key)))
+  (reduce (fn [cur-str [k match]] (string/replace cur-str match (bundle k)))
           s
           reserved-argument-map))
 
