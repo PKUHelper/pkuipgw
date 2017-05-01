@@ -125,6 +125,10 @@ $ pkuipgw l
 
 [@Luolc](https://github.com/Luolc)
 
+## References
+
+- [PKU ITS 网关的新 API](https://blog.yangl1996.com/pku-its-api-spec/) by [@yangl1996](https://github.com/yangl1996)
+
 ## License
 
 Copyright © 2017 PKU Helper
