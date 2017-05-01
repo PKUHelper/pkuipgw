@@ -46,7 +46,7 @@ Enjoy yourself!
 $ pkuipgw [--help] [--version] <action> [<options>]
 ```
 
-## Examples
+## Quick Start
 
 Connect to IP Gateway.
 ```bash
@@ -67,23 +67,36 @@ You could also use the full action command or full option. `--long-opt=ARG` is e
 $ pkuipgw connect --user-id 14000XXXXX --password=********
 ```
 
-Disconnect. No need for neither user id nor password to disconnect the current device from IP Gateway.
+Store the user id and password on local.
+```bash
+$ pkuipgw config -u 14000XXXXX -p ********
+```
+
+Once setup is completed, you would no longer need to input the user id or password.
+```bash
+$ pkuipgw c # no need to specify the user id or password now
+```
+
+Disconnect.
 ```bash
 $ pkuipgw d
 ```
 Disconnect all.
 ```bash
-$ pkuipgw d -a -u 14000XXXXX -p ********
+$ pkuipgw d -a
 ```
 
 Disconnect the connection with specific ip.
 ```bash
-$ pkuipgw d -u 14000XXXXX -p ******** --ip=192.168.0.1
+$ pkuipgw d --ip=192.168.0.1
 ```
+\[WARNING\] The server of PKU Computer Center does not validate the ip you request.
+Passing a wrong ip may lead to weird output. 
+We are not able to guarantee the output shows what exactly happens every time. 
 
 Show the list of current connections.
 ```bash
-$ pkuipgw l -u 14000XXXXX -p ********
+$ pkuipgw l
 ```
 
 ## Document
@@ -95,6 +108,7 @@ $ pkuipgw l -u 14000XXXXX -p ********
 | connect | c, connect | Connect to PKU IP Gateway |
 | disconnect | d, disconnect | Disconnect from PKU IP Gateway |
 | list | l, list | Show the list of current connections |
+| config | config | Set the global config |
 
 #### Options:
 
