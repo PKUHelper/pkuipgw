@@ -1,4 +1,4 @@
-(defproject pkuipgw "1.0.0"
+(defproject pkuipgw "1.0.1-SNAPSHOT"
   :description "PKU IP Gateway connection handler."
   :url "https://github.com/PKUHelper/pkuipgw"
   :license {:name "Eclipse Public License"
